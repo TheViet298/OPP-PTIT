@@ -29,7 +29,7 @@ public class J01010 {
             }
             if (found)
             {
-                String result = c.replaceFirst("^0+", "");
+                String result = c.replaceFirst("^0+", ""); // biểu thức chính quy loại bỏ kí tự 0 đầu 
                 boolean check = false;
                 for (int i = 0; i < result.length(); i++)
                 {
