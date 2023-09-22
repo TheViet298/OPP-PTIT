@@ -3,29 +3,26 @@ import java.util.*;
 public class J03027 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        String s = input.nextLine();
+        String s = input.next();
 
-        int[] cnt = new int[256];
+        StringBuilder result = new StringBuilder(s);
+        boolean removed = true;
 
-        // Đánh dấu ký tự xuất hiện
-        for (int i = 0; i < s.length(); i++) {
-            cnt[s.charAt(i)]++;
-        }
-
-        // Nếu cnt % 2 != 0 thì in ra
-        StringBuilder res = new StringBuilder();
-        for (int i = 0; i < 256; i++) {
-            if (cnt[i] != 0) {
-                if (cnt[i] % 2 != 0) {
-                    res.append((char) i);
+        while (removed) {
+            removed = false;
+            for (int i = 0; i < result.length() - 1; i++) {
+                if (result.charAt(i) == result.charAt(i + 1)) {
+                    result.delete(i, i + 2); // Xóa 2 ký tự giống nhau
+                    removed = true;
+                    break;
                 }
             }
         }
-//        check StringBuilder thì khong dùng isEmpty
-        if (res.length() == 0) {
+
+        if (result.length() == 0) {
             System.out.println("Empty String");
         } else {
-            System.out.println(res.toString());
+            System.out.println(result.toString());
         }
     }
 }
